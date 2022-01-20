@@ -51,6 +51,7 @@
 		8D36533B2705007800717A0C /* TipCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				8D36534A2705080200717A0C /* Models */,
 				8D36533C2705007800717A0C /* TipCalculatorApp.swift */,
 				8D36533E2705007800717A0C /* ContentView.swift */,
 				8D3653402705007900717A0C /* Assets.xcassets */,
@@ -65,6 +66,13 @@
 				8D3653432705007900717A0C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8D36534A2705080200717A0C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
