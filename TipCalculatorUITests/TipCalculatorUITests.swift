@@ -9,11 +9,13 @@ import XCTest
 
 class TipCalculatorUITests: XCTestCase {
     var app: XCUIApplication!
+    var contentViewPage: ContentViewPage!
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
         app = XCUIApplication()
+        contentViewPage = ContentViewPage(app: app)
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         app.launch()
@@ -29,26 +31,26 @@ class TipCalculatorUITests: XCTestCase {
         // UI tests must launch the application that they test.
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        let textField = app.textFields["EnterTottalTextField"]
+        let textField = contentViewPage.enterTottalTextField
         XCTAssertEqual(textField.value as! String, "Enter total")
     }
     
     func testDefaultTipValue() {
-        let selector = app.segmentedControls["TipSelector"]
+        let selector = contentViewPage.tipSelector
         let button = selector.buttons.element(boundBy: 1)
         XCTAssertEqual(button.label, "20%")
         XCTAssertEqual(button.isSelected, true)
     }
     
     func testCalcTip() {
-        let totalTextField = app.textFields["EnterTottalTextField"]
+        let totalTextField = contentViewPage.enterTottalTextField
         totalTextField.tap()
         totalTextField.typeText("100")
         
-        let calcTipButton = app.buttons["calcTipButton"]
+        let calcTipButton = contentViewPage.calcTipButton
         calcTipButton.tap()
         
-        let tipText = app.staticTexts["tipText"]
+        let tipText = contentViewPage.tipText
         let _ = tipText.waitForExistence(timeout: 1.0)
         XCTAssertEqual(tipText.label, "$20.00")
     }
