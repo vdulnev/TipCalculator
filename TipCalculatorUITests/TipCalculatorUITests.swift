@@ -54,6 +54,17 @@ class TipCalculatorUITests: XCTestCase {
         let _ = tipText.waitForExistence(timeout: 1.0)
         XCTAssertEqual(tipText.label, "$20.00")
     }
+    
+    func testRecorded() {
+        let app = XCUIApplication()
+        app.launch()
+        let textField = app/*@START_MENU_TOKEN@*/.textFields["EnterTottalTextField"]/*[[".textFields[\"Enter total\"]",".textFields[\"EnterTottalTextField\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        textField.tap()
+        textField.typeText("100")
+        app/*@START_MENU_TOKEN@*/.buttons["calcTipButton"]/*[[".buttons[\"Calculate Tip\"]",".buttons[\"calcTipButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let staticText = app/*@START_MENU_TOKEN@*/.staticTexts["tipText"]/*[[".staticTexts[\"$20.00\"]",".staticTexts[\"tipText\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        XCTAssertEqual(staticText.label, "$20.00")
+    }
 //    func testLaunchPerformance() throws {
 //        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
 //            // This measures how long it takes to launch your application.
